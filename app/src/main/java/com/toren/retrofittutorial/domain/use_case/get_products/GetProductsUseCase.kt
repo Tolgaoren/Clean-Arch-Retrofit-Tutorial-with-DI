@@ -2,6 +2,7 @@ package com.toren.retrofittutorial.domain.use_case.get_products
 
 import com.toren.retrofittutorial.common.Resource
 import com.toren.retrofittutorial.data.remote.dto.toProduct
+import com.toren.retrofittutorial.data.remote.dto.toProductList
 import com.toren.retrofittutorial.domain.model.Product
 import com.toren.retrofittutorial.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.Flow
@@ -16,13 +17,13 @@ class GetProductsUseCase @Inject constructor(
 
     operator fun invoke(): Flow<Resource<List<Product>>> = flow {
         try {
-            emit(Resource.Loading())
-            val products = repository.getProducts().map {it.toProduct()}
-            emit(Resource.Success(products))
+            emit(Resource.Loading<List<Product>>())
+            val products = repository.getProducts().toProductList()
+            emit(Resource.Success<List<Product>>(products))
         } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
+            emit(Resource.Error<List<Product>>(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {
-            emit(Resource.Error(e.localizedMessage ?: "Couldn't reach server. Check your internet connection"))
+            emit(Resource.Error<List<Product>>(e.localizedMessage ?: "Couldn't reach server. Check your internet connection"))
         }
     }
 

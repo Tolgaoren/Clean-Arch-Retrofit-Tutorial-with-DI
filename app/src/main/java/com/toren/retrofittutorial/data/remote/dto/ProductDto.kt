@@ -18,7 +18,7 @@ data class ProductDto(
 
 fun ProductDto.toProduct() : Product {
     return Product(
-        //lazım olmayanları çıkaracağım
+        // lazım olmayanları çıkaracağım
         brand,
         category,
         description,

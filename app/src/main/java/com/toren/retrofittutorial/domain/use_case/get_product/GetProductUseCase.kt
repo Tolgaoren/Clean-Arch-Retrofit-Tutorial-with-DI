@@ -16,13 +16,13 @@ class GetProductUseCase @Inject constructor(
 
     operator fun invoke(id : Int): Flow<Resource<Product>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<Product>())
             val product = repository.getProductById(id).toProduct()
-            emit(Resource.Success(product))
+            emit(Resource.Success<Product>(product))
         } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
+            emit(Resource.Error<Product>(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {
-            emit(Resource.Error(e.localizedMessage ?: "Couldn't reach server. Check your internet connection"))
+            emit(Resource.Error<Product>(e.localizedMessage ?: "Couldn't reach server. Check your internet connection"))
         }
     }
 
