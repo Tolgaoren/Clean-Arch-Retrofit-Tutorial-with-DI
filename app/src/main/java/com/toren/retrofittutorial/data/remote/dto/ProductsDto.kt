@@ -9,6 +9,9 @@ data class ProductsDto(
     val total: Int
 )
 
+
+
+
 fun ProductsDto.toProductList(): List<Product> {
     return products.map { it.toProduct() }
 }

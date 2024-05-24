@@ -1,34 +1,23 @@
 package com.toren.retrofittutorial.domain.model
 
-import com.toren.retrofittutorial.data.remote.dto.ProductDto
+import com.toren.retrofittutorial.data.remote.dto.Review
 
-data class Product(
-    val brand: String,
+data class Product( // Product detail
+    val availabilityStatus: String,
+    val brand: String?,
     val category: String,
     val description: String,
     val discountPercentage: Double,
     val id: Int,
     val images: List<String>,
-    val price: Int,
+    val price: Double,
     val rating: Double,
+    val returnPolicy: String,
+    val reviews: List<Review>,
+    val shippingInformation: String,
     val stock: Int,
+    val tags: List<String>,
     val thumbnail: String,
     val title: String,
+    val warrantyInformation: String,
 )
-
-
-fun Product.toProductDto(): ProductDto {
-    return ProductDto(
-        brand,
-        category,
-        description,
-        discountPercentage,
-        id,
-        images,
-        price,
-        rating,
-        stock,
-        thumbnail,
-        title
-    )
-}

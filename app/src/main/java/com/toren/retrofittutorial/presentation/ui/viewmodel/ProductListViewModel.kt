@@ -13,9 +13,10 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val getProductsUseCase: GetProductsUseCase,
-) : ViewModel() {
+class ProductListViewModel
+    @Inject constructor(
+        private val getProductsUseCase: GetProductsUseCase,
+    ) : ViewModel() {
 
     private val _products = MutableLiveData<ProductListState>(ProductListState())
     val products: LiveData<ProductListState> = _products

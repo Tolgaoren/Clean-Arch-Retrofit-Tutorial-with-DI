@@ -3,22 +3,33 @@ package com.toren.retrofittutorial.data.remote.dto
 import com.toren.retrofittutorial.domain.model.Product
 
 data class ProductDto(
-    val brand: String,
+    val availabilityStatus: String,
+    val brand: String?,
     val category: String,
     val description: String,
+    val dimensions: Dimensions,
     val discountPercentage: Double,
     val id: Int,
     val images: List<String>,
-    val price: Int,
+    val meta: Meta,
+    val minimumOrderQuantity: Int,
+    val price: Double,
     val rating: Double,
+    val returnPolicy: String,
+    val reviews: List<Review>,
+    val shippingInformation: String,
+    val sku: String,
     val stock: Int,
+    val tags: List<String>,
     val thumbnail: String,
-    val title: String
+    val title: String,
+    val warrantyInformation: String,
+    val weight: Int
 )
 
 fun ProductDto.toProduct() : Product {
     return Product(
-        // lazım olmay  anları çıkaracağım
+        availabilityStatus,
         brand,
         category,
         description,
@@ -27,8 +38,13 @@ fun ProductDto.toProduct() : Product {
         images,
         price,
         rating,
+        returnPolicy,
+        reviews,
+        shippingInformation,
         stock,
+        tags,
         thumbnail,
-        title
+        title,
+        warrantyInformation
     )
 }
