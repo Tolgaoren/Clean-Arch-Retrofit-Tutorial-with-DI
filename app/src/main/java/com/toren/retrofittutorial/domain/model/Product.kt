@@ -1,7 +1,10 @@
 package com.toren.retrofittutorial.domain.model
 
+import android.os.Parcelable
 import com.toren.retrofittutorial.data.remote.dto.Review
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Product( // Product detail
     val availabilityStatus: String,
     val brand: String?,
@@ -20,4 +23,4 @@ data class Product( // Product detail
     val thumbnail: String,
     val title: String,
     val warrantyInformation: String,
-)
+) : Parcelable

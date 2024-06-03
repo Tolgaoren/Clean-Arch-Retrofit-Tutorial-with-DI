@@ -6,19 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.toren.retrofittutorial.databinding.FragmentProductListBinding
+import com.toren.retrofittutorial.domain.model.Product
 import com.toren.retrofittutorial.presentation.ui.adapter.ProductAdapter
 import com.toren.retrofittutorial.presentation.ui.viewmodel.ProductListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductListFragment : Fragment() {
+class ProductListFragment : Fragment(),
+    ProductAdapter.OnItemClickListener {
 
     private var _binding: FragmentProductListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ProductListViewModel by viewModels()
-    private val productAdapter = ProductAdapter(mutableListOf())
+    private val productAdapter = ProductAdapter(mutableListOf(), this)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -43,9 +46,19 @@ class ProductListFragment : Fragment() {
         }
     }
 
+    override fun onItemClick(position: Product) {
+        actionToProductDetail(position)
+    }
+
+    private fun actionToProductDetail(position: Product) {
+        val action = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(position)
+        findNavController().navigate(action)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }

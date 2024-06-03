@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.toren.retrofittutorial.common.Resource
 import com.toren.retrofittutorial.domain.use_case.get_products.GetProductsUseCase
-import com.toren.retrofittutorial.presentation.ui.ProductListState
+import com.toren.retrofittutorial.domain.model.ProductListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

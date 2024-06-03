@@ -16,9 +16,6 @@
         android:theme="@style/Theme.RetrofitTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ui.view.DetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.ui.view.MainActivity"
             android:exported="true">
             <intent-filter>

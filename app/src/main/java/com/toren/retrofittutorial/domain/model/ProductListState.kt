@@ -1,4 +1,4 @@
-package com.toren.retrofittutorial.presentation.ui
+package com.toren.retrofittutorial.domain.model
 
 import com.toren.retrofittutorial.domain.model.Product
 
